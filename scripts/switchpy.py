@@ -4,7 +4,7 @@ exos_switch = {
     'device_type': 'extreme_exos',
     'host': '10.10.1.1',
     'username': 'admin',
-    'password': 'password',
+    'password': '',
 }
 
 net_connect = ConnectHandler(**exos_switch)
