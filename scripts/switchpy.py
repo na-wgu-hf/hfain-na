@@ -2,7 +2,7 @@ from netmiko import ConnectHandler
 
 exos_switch = {
     'device_type': 'extreme_exos',
-    'host': '10.10.1.1',
+    'host': '10.10.1.24',
     'username': 'admin',
     'password': '',
 }
