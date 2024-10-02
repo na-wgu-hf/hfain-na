@@ -4,11 +4,11 @@ config = configparser.ConfigParser()
 
     # Add Group 1: Switches
 config.add_section('Switches')
-config.set('Switches', 'Local_Switch', '10.10.1.2')
-config.set('Switches', 'IT_Network', '10.10.1.5')
-config.set('Switches', 'MGMT_Network', '10.10.1.6')
-config.set('Switches', 'ACCT_Network', '10.10.1.7')
-config.set('Switches', 'User_Network', '10.10.1.8')
+config.set('Switches', 'Local_Switch', '10.10.1.24')
+config.set('Switches', 'IT_Network', '10.10.1.30')
+config.set('Switches', 'MGMT_Network', '10.10.1.31')
+config.set('Switches', 'ACCT_Network', '10.10.1.32')
+config.set('Switches', 'User_Network', '10.10.1.22')
 
     # Add Group 2: Windows machines
 config.add_section('Windows_Machines')
