@@ -1,3 +1,5 @@
+import configparser
+
 config = configparser.ConfigParser()
 
     # Add Group 1: Switches
