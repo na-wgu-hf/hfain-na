@@ -46,5 +46,5 @@ config.set('Switches', 'ACCT_Network', '10.10.1.32')
 config.set('Switches', 'User_Network', '10.10.1.22')
 
 # Write the configuration to an INI file
-with open('access_closet_inventory.ini', 'w') as configfile:
+with open('access_closet_switchinventory.ini', 'w') as configfile:
     config.write(configfile)
