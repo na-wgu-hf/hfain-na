@@ -4,7 +4,7 @@ import datetime
 
 # Device details (customize these)
 devices = [
-    {"name": "TestBox1", "ip": "10.10.1.2"}
+    {"name": "Linuxdesktop-1", "ip": "172.16.4.6"}
 ]
 
 # Function to retrieve settings
@@ -14,7 +14,7 @@ def get_device_settings(ip):
         # Establish SSH connection
         client = paramiko.SSHClient()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        client.connect(ip, username='your_username', password='your_password')  # Update with your credentials
+        client.connect(ip, username='student', password='P@ssw0rd')  # Update with your credentials
         
         # Sample commands to retrieve settings (customize these according to your environment)
         commands = {
@@ -23,16 +23,16 @@ def get_device_settings(ip):
                 "echo 'RAM: $(free -h | grep Mem | awk '{print $2}')'",
                 "echo 'vCPUs: $(nproc)'",
                 "echo 'QEMU binary: $(which qemu-system-x86_64)'",
-                "echo 'Boot Priority: <your_command>'",
-                "echo 'On close: <your_command>'",
-                "echo 'Console type: <your_command>'",
+                "echo 'Boot Priority: <your_command>'",  # Replace with actual command
+                "echo 'On close: <your_command>'",      # Replace with actual command
+                "echo 'Console type: <your_command>'",  # Replace with actual command
             ],
             "Network Settings": [
                 "ip a",
-                "echo 'Adapters: <your_command>'",
-                "echo 'Base MAC: <your_command>'",
-                "echo 'Type: <your_command>'",
-                "echo 'Replicate network connection states in QEMU: <your_command>'",
+                "echo 'Adapters: <your_command>'",      # Replace with actual command
+                "echo 'Base MAC: <your_command>'",      # Replace with actual command
+                "echo 'Type: <your_command>'",          # Replace with actual command
+                "echo 'Replicate network connection states in QEMU: <your_command>'",  # Replace with actual command
             ]
         }
 
