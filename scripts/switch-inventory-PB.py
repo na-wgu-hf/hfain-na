@@ -11,11 +11,11 @@ switches = {
 }
 
 mac_addresses = {
-    'Local_Switch': '00:11:22:33:44:66',
-    'IT_Network': '00:11:22:33:44:67',
-    'MGMT_Network': '00:11:22:33:44:68',
-    'ACCT_Network': '00:11:22:33:44:69',
-    'User_Network': '00:11:22:33:44:70',
+    'Local_Switch': '0c:c0:5e:66:00:00',
+    'IT_Network': '0c:1c:b2:85:00:00',
+    'MGMT_Network': '0c:cc:78:5d:00:00',
+    'ACCT_Network': '0c:40:34:07:00:00',
+    'User_Network': '0c:e0:f2:0b:00:00',
 }
 
 # Add General and Network Settings for each switch
