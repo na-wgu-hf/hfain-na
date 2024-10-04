@@ -36,7 +36,7 @@ for switch_name, switch_ip in switches.items():
     config.set(f'{switch_name}_Network_Settings', 'Adapters', '13')
     config.set(f'{switch_name}_Network_Settings', 'Base_MAC', mac_addresses[switch_name])
     config.set(f'{switch_name}_Network_Settings', 'Type', 'Realtek 8139 Ethernet (rtl8139)')
-    config.set(f'{switch_name}_Network_Settings', 'Replicate_Network_Connection_States in Qemu', 'True')
+    config.set(f'{switch_name}_Network_Settings', 'Replicate Network Connection States in Qemu', 'True')
 
 config.add_section('Switches')
 config.set('Switches', 'Local_Switch', '10.10.1.24')
