@@ -10,6 +10,14 @@ switches = {
     'User_Network': '10.10.1.22',
 }
 
+mac_addresses = {
+    'Local_Switch': '00:11:22:33:44:66',
+    'IT_Network': '00:11:22:33:44:67',
+    'MGMT_Network': '00:11:22:33:44:68',
+    'ACCT_Network': '00:11:22:33:44:69',
+    'User_Network': '00:11:22:33:44:70',
+}
+
 # Add General and Network Settings for each switch
 for switch_name, switch_ip in switches.items():
 # General Settings section
@@ -26,7 +34,7 @@ for switch_name, switch_ip in switches.items():
     # Network Settings section
     config.add_section(f'{switch_name}_Network_Settings')
     config.set(f'{switch_name}_Network_Settings', 'Adapters', '13')
-    config.set(f'{switch_name}_Network_Settings', 'Base_MAC', '00:11:22:33:44:55')
+    config.set(f'{switch_name}_Network_Settings', 'Base_MAC', mac_addresses[switch_name])
     config.set(f'{switch_name}_Network_Settings', 'Type', 'Realtek 8139 Ethernet (rtl8139)')
     config.set(f'{switch_name}_Network_Settings', 'Replicate_Network_Connection_States in Qemu', 'True')
 
