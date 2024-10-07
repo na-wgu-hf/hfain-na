@@ -1,0 +1,12 @@
+---
+- name: Configure VLANs for Access Layer Switches
+  hosts: access_switches
+  gather_facts: no
+  tasks:
+    - name: Create VLANs
+      community.network.exos_command:
+        commands:
+          - create vlan User_Network id 10
+          - create vlan ACCT_Network id 20
+          - create vlan MGMT_Network id 30
+          - create vlan IT_Network id 40
