@@ -1,0 +1,9 @@
+---
+- name: Create User Accounts on Access Layer Switches
+  hosts: access_switches
+  gather_facts: no
+  tasks:
+    - name: Create Local-Admin user on switches
+      community.network.exos_config:
+        lines:
+          - username Local-Admin privilege 15 password WGU123
