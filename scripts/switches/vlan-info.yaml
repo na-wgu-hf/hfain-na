@@ -8,9 +8,7 @@
         commands: show vlan
       register: vlan_output
 
-    - name: Append VLAN information to a single file
-      lineinfile:
-        path: vlan_info_all_switches.txt
-        line: "{{ inventory_hostname }}:\n{{ vlan_output.stdout[0] }}"
-        create: yes
-        state: present
+    - name: Write VLAN information to a file
+      copy:
+        content: "{{ vlan_output.stdout }}"
+        dest: /home/student/playbooks/vlan_info_{{ inventory_hostname }}.txt
