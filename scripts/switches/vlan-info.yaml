@@ -4,13 +4,13 @@
   gather_facts: no
   tasks:
     - name: Get VLAN information
-      ansible.netcommon.cli_command:
-        command: show vlan
+      community.network.exos_command:
+        commands: show vlan
       register: vlan_output
 
     - name: Append VLAN information to a single file
       lineinfile:
         path: vlan_info_all_switches.txt
-        line: "{{ inventory_hostname }}:\n{{ vlan_output.stdout }}"
+        line: "{{ inventory_hostname }}:\n{{ vlan_output.stdout[0] }}"
         create: yes
         state: present
