@@ -1,12 +1,63 @@
 ---
-- name: Configure VLANs for Access Layer Switches
-  hosts: access_switches
+- name: Configure VLANs on ExtremeXOS Switches
+  hosts: switches
   gather_facts: no
   tasks:
-    - name: Create VLANs
+    
+    # Create VLANs on User_Network switch
+    - name: Create VLAN on User_Network
+      community.network.exos_config:
+        lines:
+          - create vlan user_vlan tag 10
+          - configure vlan user_vlan add ports 1-48 tagged
+        when: inventory_hostname == 'User_Network'
+
+    # Create VLANs on ACCT_Network switch
+    - name: Create VLAN on ACCT_Network
+      community.network.exos_config:
+        lines:
+          - create vlan acct_vlan tag 20
+          - configure vlan acct_vlan add ports 1-48 tagged
+        when: inventory_hostname == 'ACCT_Network'
+
+    # Create VLANs on MGMT_Network switch
+    - name: Create VLAN on MGMT_Network
+      community.network.exos_config:
+        lines:
+          - create vlan mgmt_vlan tag 30
+          - configure vlan mgmt_vlan add ports 1-48 tagged
+        when: inventory_hostname == 'MGMT_Network'
+
+    # Create VLANs on IT_Network switch
+    - name: Create VLAN on IT_Network
+      community.network.exos_config:
+        lines:
+          - create vlan it_vlan tag 40
+          - configure vlan it_vlan add ports 1-48 tagged
+        when: inventory_hostname == 'IT_Network'
+        
+    # Core switch VLAN configuration
+    - name: Create VLANs on Core switch (Local_Switch)
+      community.network.exos_config:
+        lines:
+          - create vlan user_vlan tag 10
+          - create vlan acct_vlan tag 20
+          - create vlan mgmt_vlan tag 30
+          - create vlan it_vlan tag 40
+          - configure vlan user_vlan add ports 1 tagged
+          - configure vlan acct_vlan add ports 2 tagged
+          - configure vlan mgmt_vlan add ports 3 tagged
+          - configure vlan it_vlan add ports 4 tagged
+        when: inventory_hostname == 'Local_Switch'
+
+    # Verify VLAN configuration
+    - name: Verify VLAN configuration
       community.network.exos_command:
-        commands:
-          - create vlan User_Network id 10
-          - create vlan ACCT_Network id 20
-          - create vlan MGMT_Network id 30
-          - create vlan IT_Network id 40
+        commands: show vlan
+      register: vlan_output
+      when: inventory_hostname in ['User_Network', 'ACCT_Network', 'MGMT_Network', 'IT_Network', 'Local_Switch']
+
+    - name: Save VLAN output to file
+      copy:
+        content: "{{ vlan_output.stdout }}"
+        dest: /home/student/playbooks/vlan_info_{{ inventory_hostname }}.txt
