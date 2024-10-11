@@ -1,0 +1,35 @@
+
+PLAY [Configure VLANs on ExtremeXOS Switches] **********************************
+
+TASK [Create VLAN on user_network] *********************************************
+skipping: [local_switch]
+skipping: [it_network]
+skipping: [mgmt_network]
+skipping: [acct_network]
+fatal: [user_network]: FAILED! => {"changed": false, "msg": "create vlan user_vlan tag 10\r\n\r\u0007                                  ^\r\r\n%% Invalid name detected at '^' marker.\r\n%% Name user_vlan is already in use.\r\r\n* EXOS-VM.6 # "}
+
+TASK [Create VLAN on acct_network] *********************************************
+skipping: [local_switch]
+skipping: [it_network]
+skipping: [mgmt_network]
+fatal: [acct_network]: FAILED! => {"changed": false, "msg": "create vlan acct_vlan tag 20\r\n\r\u0007                                  ^\r\r\n%% Invalid name detected at '^' marker.\r\n%% Name acct_vlan is already in use.\r\r\n* EXOS-VM.6 # "}
+
+TASK [Create VLAN on mgmt_network] *********************************************
+skipping: [local_switch]
+skipping: [it_network]
+fatal: [mgmt_network]: FAILED! => {"changed": false, "msg": "create vlan mgmt_vlan tag 30\r\n\r\u0007                                  ^\r\r\n%% Invalid name detected at '^' marker.\r\n%% Name mgmt_vlan is already in use.\r\r\n* EXOS-VM.6 # "}
+
+TASK [Create VLAN on it_network] ***********************************************
+skipping: [local_switch]
+fatal: [it_network]: FAILED! => {"changed": false, "msg": "create vlan it_vlan tag 40\r\n\r\u0007                                ^\r\r\n%% Invalid name detected at '^' marker.\r\n%% Name it_vlan is already in use.\r\r\n* EXOS-VM.6 # "}
+
+TASK [Create VLANs on Core switch (local_switch)] ******************************
+fatal: [local_switch]: FAILED! => {"changed": false, "msg": "create vlan user_vlan tag 10\r\n\r\u0007                                  ^\r\r\n%% Invalid name detected at '^' marker.\r\n%% Name user_vlan is already in use.\r\r\n* EXOS-VM.6 # "}
+
+PLAY RECAP *********************************************************************
+acct_network               : ok=0    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+it_network                 : ok=0    changed=0    unreachable=0    failed=1    skipped=3    rescued=0    ignored=0   
+local_switch               : ok=0    changed=0    unreachable=0    failed=1    skipped=4    rescued=0    ignored=0   
+mgmt_network               : ok=0    changed=0    unreachable=0    failed=1    skipped=2    rescued=0    ignored=0   
+user_network               : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
