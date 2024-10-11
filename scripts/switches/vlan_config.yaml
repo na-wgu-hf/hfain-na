@@ -75,5 +75,5 @@
 
     - name: Save VLAN output to file
       copy:
-        content: "{{ vlan_output.stdout }}"
+        content: "{{ vlan_output['stdout'][0] if 'stdout' in vlan_output and vlan_output['stdout'] else '' }}"
         dest: /home/student/playbooks/vlan_info_{{ inventory_hostname }}.txt
