@@ -1,0 +1,35 @@
+student@student-Standard-PC-i440FX-PIIX-1996:~/playbooks$ ansible-playbook windows-users.yaml
+
+PLAY [Create user accounts on Windows desktops] ********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [windowsdesktop-2]
+ok: [windowsdesktop-4]
+ok: [windowsdesktop-3]
+ok: [windowsdesktop-1]
+
+TASK [Create local admin users on Windows desktops] ****************************
+changed: [windowsdesktop-2] => (item={'username': 'DesktopUser1', 'password': 'WGU123'})
+changed: [windowsdesktop-3] => (item={'username': 'DesktopUser1', 'password': 'WGU123'})
+changed: [windowsdesktop-1] => (item={'username': 'DesktopUser1', 'password': 'WGU123'})
+changed: [windowsdesktop-4] => (item={'username': 'DesktopUser1', 'password': 'WGU123'})
+changed: [windowsdesktop-2] => (item={'username': 'DesktopUser2', 'password': 'WGU123'})
+changed: [windowsdesktop-3] => (item={'username': 'DesktopUser2', 'password': 'WGU123'})
+changed: [windowsdesktop-2] => (item={'username': 'DesktopUser3', 'password': 'WGU123'})
+changed: [windowsdesktop-3] => (item={'username': 'DesktopUser3', 'password': 'WGU123'})
+changed: [windowsdesktop-4] => (item={'username': 'DesktopUser2', 'password': 'WGU123'})
+changed: [windowsdesktop-1] => (item={'username': 'DesktopUser2', 'password': 'WGU123'})
+changed: [windowsdesktop-2] => (item={'username': 'DesktopUser4', 'password': 'WGU123'})
+changed: [windowsdesktop-3] => (item={'username': 'DesktopUser4', 'password': 'WGU123'})
+changed: [windowsdesktop-4] => (item={'username': 'DesktopUser3', 'password': 'WGU123'})
+changed: [windowsdesktop-1] => (item={'username': 'DesktopUser3', 'password': 'WGU123'})
+changed: [windowsdesktop-4] => (item={'username': 'DesktopUser4', 'password': 'WGU123'})
+changed: [windowsdesktop-1] => (item={'username': 'DesktopUser4', 'password': 'WGU123'})
+
+PLAY RECAP *********************************************************************
+windowsdesktop-1           : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+windowsdesktop-2           : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+windowsdesktop-3           : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+windowsdesktop-4           : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+student@student-Standard-PC-i440FX-PIIX-1996:~/playbooks$ 
