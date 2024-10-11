@@ -6,14 +6,14 @@
       when: inventory_hostname == 'test_box_1'
       user:
         name: TestUser1
-        password: "{{ ansible_password }}"
-        groups: wheel
+        password: "{{ 'WGU123' | password_hash('sha512') }}"
+        groups: sudo
         state: present
 
     - name: Create TestUser2 on MGMT Network
       when: inventory_hostname == 'test_box_2'
       user:
         name: TestUser2
-        password: "{{ ansible_password }}"
-        groups: wheel
+        password: "{{ 'WGU123' | password_hash('sha512') }}"
+        groups: sudo
         state: present
