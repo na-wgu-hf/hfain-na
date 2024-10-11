@@ -1,0 +1,22 @@
+student@student-Standard-PC-i440FX-PIIX-1996:~/playbooks$ ansible-playbook linux-users.yaml
+
+PLAY [Create user accounts on Linux test boxes] ********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [test_box_1]
+ok: [test_box_2]
+
+TASK [Create TestUser1 on ACCT Network] ****************************************
+skipping: [test_box_2]
+changed: [test_box_1]
+
+TASK [Create TestUser2 on MGMT Network] ****************************************
+skipping: [test_box_1]
+changed: [test_box_2]
+
+PLAY RECAP *********************************************************************
+test_box_1                 : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+test_box_2                 : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+
+student@student-Standard-PC-i440FX-PIIX-1996:~/playbooks$ ^C
+student@student-Standard-PC-i440FX-PIIX-1996:~/playbooks$ 
