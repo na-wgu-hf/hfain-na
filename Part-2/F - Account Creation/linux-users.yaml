@@ -1,6 +1,7 @@
 ---
 - name: Create user accounts on Linux test boxes
   hosts: linux
+  become: yes
   tasks:
     - name: Create TestUser1 on ACCT Network
       when: inventory_hostname == 'test_box_1'
