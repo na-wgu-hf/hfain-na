@@ -58,12 +58,6 @@
           
           # Configure trunking for it_network on ports 3
           - configure vlan it_vlan add ports 3 tagged
-          
-          # Ensure Ansible machine (port 1) can access all VLANs (untagged for management)
-          - configure vlan user_vlan add ports 1 untagged
-          - configure vlan acct_vlan add ports 1 untagged
-          - configure vlan mgmt_vlan add ports 1 untagged
-          - configure vlan it_vlan add ports 1 untagged
       when: inventory_hostname == 'local_switch'
 
     # Verify VLAN configuration
