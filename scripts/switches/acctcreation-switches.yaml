@@ -1,6 +1,6 @@
 ---
 - name: Create User Accounts on Access Layer Switches
-  hosts: access_switches
+  hosts: switches
   gather_facts: no
   tasks:
     - name: Create Local-Admin user on switches
