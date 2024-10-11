@@ -10,7 +10,6 @@
         lines:
           - create vlan user_vlan tag 10
           - configure vlan user_vlan add ports 1 tagged
-          - configure vlan user_vlan add ports 2-5 untagged
       when: inventory_hostname == 'user_network'
 
     # Create VLAN on acct_network switch
@@ -19,7 +18,6 @@
         lines:
           - create vlan acct_vlan tag 20
           - configure vlan acct_vlan add ports 1 tagged
-          - configure vlan acct_vlan add ports 2 untagged
       when: inventory_hostname == 'acct_network'
 
     # Create VLAN on mgmt_network switch
@@ -28,7 +26,6 @@
         lines:
           - create vlan mgmt_vlan tag 30
           - configure vlan mgmt_vlan add ports 1 tagged
-          - configure vlan mgmt_vlan add ports 2 untagged
       when: inventory_hostname == 'mgmt_network'
 
     # Create VLAN on it_network switch
@@ -37,7 +34,6 @@
         lines:
           - create vlan it_vlan tag 40
           - configure vlan it_vlan add ports 1 tagged
-          - configure vlan it_vlan add ports 2 untagged
       when: inventory_hostname == 'it_network'
         
     # Core switch VLAN configuration for local_switch
