@@ -6,4 +6,4 @@
     - name: Create Local-Admin user on switches
       community.network.exos_config:
         lines:
-          - username Local-Admin privilege 15 password WGU123
+          - create account admin Local-Admin WGU123
