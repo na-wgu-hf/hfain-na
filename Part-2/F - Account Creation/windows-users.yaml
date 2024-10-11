@@ -1,0 +1,16 @@
+---
+- name: Create user accounts on Windows desktops
+  hosts: windows
+  tasks:
+    - name: Create local admin users on Windows desktops
+      ansible.windows.win_user:
+        name: "{{ item.username }}"
+        password: "{{ item.password }}"
+        groups:
+          - Administrators
+        state: present
+      loop:
+        - { username: "DesktopUser1", password: "WGU123" }
+        - { username: "DesktopUser2", password: "WGU123" }
+        - { username: "DesktopUser3", password: "WGU123" }
+        - { username: "DesktopUser4", password: "WGU123" }
