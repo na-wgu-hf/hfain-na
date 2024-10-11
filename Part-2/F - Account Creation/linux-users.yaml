@@ -1,0 +1,19 @@
+---
+- name: Create user accounts on Linux test boxes
+  hosts: linux
+  tasks:
+    - name: Create TestUser1 on ACCT Network
+      when: inventory_hostname == 'test_box_1'
+      user:
+        name: TestUser1
+        password: "{{ ansible_password }}"
+        groups: wheel
+        state: present
+
+    - name: Create TestUser2 on MGMT Network
+      when: inventory_hostname == 'test_box_2'
+      user:
+        name: TestUser2
+        password: "{{ ansible_password }}"
+        groups: wheel
+        state: present
