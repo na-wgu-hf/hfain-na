@@ -4,59 +4,59 @@
   gather_facts: no
   tasks:        
     
-    # Create VLAN on User_Network switch
-    - name: Create VLAN on User_Network
+    # Create VLAN on user_network switch
+    - name: Create VLAN on user_network
       community.network.exos_config:
         lines:
           - create vlan user_vlan tag 10
           - configure vlan user_vlan add ports 1 tagged
           - configure vlan user_vlan add ports 2-5 untagged
-      when: inventory_hostname == 'User_Network'
+      when: inventory_hostname == 'user_network'
 
-    # Create VLAN on ACCT_Network switch
-    - name: Create VLAN on ACCT_Network
+    # Create VLAN on acct_network switch
+    - name: Create VLAN on acct_network
       community.network.exos_config:
         lines:
           - create vlan acct_vlan tag 20
           - configure vlan acct_vlan add ports 1 tagged
-      when: inventory_hostname == 'ACCT_Network'
+      when: inventory_hostname == 'acct_network'
 
-    # Create VLAN on MGMT_Network switch
-    - name: Create VLAN on MGMT_Network
+    # Create VLAN on mgmt_network switch
+    - name: Create VLAN on mgmt_network
       community.network.exos_config:
         lines:
           - create vlan mgmt_vlan tag 30
           - configure vlan mgmt_vlan add ports 1 tagged
-      when: inventory_hostname == 'MGMT_Network'
+      when: inventory_hostname == 'mgmt_network'
 
-    # Create VLAN on IT_Network switch
-    - name: Create VLAN on IT_Network
+    # Create VLAN on it_network switch
+    - name: Create VLAN on it_network
       community.network.exos_config:
         lines:
           - create vlan it_vlan tag 40
           - configure vlan it_vlan add ports 1 tagged
-      when: inventory_hostname == 'IT_Network'
+      when: inventory_hostname == 'it_network'
         
-    # Core switch VLAN configuration for Local_Switch
-    - name: Create VLANs on Core switch (Local_Switch)
+    # Core switch VLAN configuration for local_switch
+    - name: Create VLANs on Core switch (local_switch)
       community.network.exos_config:
         lines:
-          # Create the VLANs on Local_Switch
+          # Create the VLANs on local_switch
           - create vlan user_vlan tag 10
           - create vlan acct_vlan tag 20
           - create vlan mgmt_vlan tag 30
           - create vlan it_vlan tag 40
           
-          # Configure trunking for User_Network on ports 9
+          # Configure trunking for user_network on ports 9
           - configure vlan user_vlan add ports 9 tagged
           
-          # Configure trunking for ACCT_Network on ports 7
+          # Configure trunking for acct_network on ports 7
           - configure vlan acct_vlan add ports 7 tagged
           
-          # Configure trunking for MGMT_Network on ports 5
+          # Configure trunking for mgmt_network on ports 5
           - configure vlan mgmt_vlan add ports 5 tagged
           
-          # Configure trunking for IT_Network on ports 3
+          # Configure trunking for it_network on ports 3
           - configure vlan it_vlan add ports 3 tagged
           
           # Ensure Ansible machine (port 1) can access all VLANs (untagged for management)
@@ -64,14 +64,14 @@
           - configure vlan acct_vlan add ports 1 untagged
           - configure vlan mgmt_vlan add ports 1 untagged
           - configure vlan it_vlan add ports 1 untagged
-      when: inventory_hostname == 'Local_Switch'
+      when: inventory_hostname == 'local_switch'
 
     # Verify VLAN configuration
     - name: Verify VLAN configuration
       community.network.exos_command:
         commands: show vlan
       register: vlan_output
-      when: inventory_hostname in ['User_Network', 'ACCT_Network', 'MGMT_Network', 'IT_Network', 'Local_Switch']
+      when: inventory_hostname in ['user_network', 'acct_network', 'mgmt_network', 'it_network', 'local_switch']
 
     - name: Save VLAN output to file
       copy:
