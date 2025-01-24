@@ -1,0 +1,15 @@
+pip list
+
+cd 'Part-1/B - Switch Inventory'/	python3 python3 switch-inventory-PB.py
+
+ansible-playbook vlan_config.yaml
+
+ansible-playbook vlan-info.yaml
+
+ansible-playbook acctcreation-switches.yaml
+
+ansible-playbook windows-users.yaml
+
+ansible-playbook linux-users.yaml
+
+cd '/workspaces/hfain-na/Part-2/E - Machine Inventory'/		python3 machine-inv.py
